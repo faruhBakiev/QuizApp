@@ -1,0 +1,21 @@
+com.example.presentation
+color black
+color purple_200
+color purple_500
+color purple_700
+color teal_200
+color teal_700
+color white
+drawable brain_v2
+drawable ic_launcher_background
+drawable ic_launcher_foreground
+drawable splash_image
+id homeFragment
+id nav_graph_xml
+id nav_host_fragment
+layout activity_main
+layout fragment_home
+navigation nav_graph
+string app_name
+style Theme_QuizApp
+style splashScreenTheme

@@ -1,0 +1,1 @@
+C:\Users\Admin\AndroidStudioProjects\QuizApp7\domain\build\classes\kotlin\main\com\example\domain\repositories\Repositories.class
