@@ -29,60 +29,47 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_quiz"
         tools:ignore="ContentDescription" />
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="@dimen/dp280"
+    <TextView
+        android:id="@+id/tv_questions"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:text="@string/questions_amount"
+        android:textColor="@color/grey"
+        android:textSize="@dimen/sp12"
         app:layout_constraintBottom_toTopOf="@+id/linear_layout"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/im_quiz"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/im_quiz">
+        app:layout_constraintTop_toBottomOf="@+id/im_quiz" />
 
-        <TextView
-            android:id="@+id/tv_questions"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/questions_amount"
-            android:textColor="@color/grey"
-            android:textSize="@dimen/sp12"
-            app:layout_constraintBottom_toTopOf="@+id/linear_layout"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/im_quiz" />
-
-        <TextView
-            android:id="@+id/tv_number"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dp6"
-            android:text="@string/_10"
-            android:textColor="@color/black"
-            android:textSize="@dimen/sp20"
-            app:layout_constraintBottom_toBottomOf="@+id/sb_home"
-            app:layout_constraintStart_toEndOf="@+id/tv_questions"
-            app:layout_constraintTop_toBottomOf="@+id/im_quiz" />
-    </LinearLayout>
+    <TextView
+        android:id="@+id/tv_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp6"
+        android:text="@string/_10"
+        android:textColor="@color/black"
+        android:textSize="@dimen/sp20"
+        app:layout_constraintBottom_toBottomOf="@+id/sb_home"
+        app:layout_constraintStart_toEndOf="@+id/tv_questions"
+        app:layout_constraintTop_toBottomOf="@+id/im_quiz" />
 
     <SeekBar
         android:id="@+id/sb_home"
         android:layout_width="@dimen/dp280"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp10"
-        android:layout_marginEnd="@dimen/dp10"
+        android:layout_marginEnd="@dimen/dp12"
         android:max="20"
         android:min="0"
-        android:progressTint="@color/violet"
-        android:thumbTint="@color/violet"
+        android:progressTint="#BE52F2"
+        android:thumbTint="#BE52F2"
         app:layout_constraintBottom_toTopOf="@+id/linear_layout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        tools:ignore="UnusedAttribute" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_questions" />
 
     <LinearLayout
         android:id="@+id/linear_layout"
-        android:layout_width="@dimen/dp280"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -94,9 +81,9 @@
             android:id="@+id/tv_category"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp16"
+            android:layout_marginTop="15dp"
             android:text="@string/category"
-            android:textColor="@color/grey"
+            android:textColor="#5C5858"
             android:textSize="@dimen/sp12"
             app:layout_constraintEnd_toEndOf="@+id/tv_number"
             app:layout_constraintStart_toStartOf="parent"
@@ -104,10 +91,10 @@
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/material_card"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dp50"
-            android:layout_marginTop="@dimen/dp10"
-            app:cardCornerRadius="@dimen/dp4"
+            android:layout_width="260dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            app:cardCornerRadius="3dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_category">
@@ -123,10 +110,10 @@
             android:id="@+id/tv_difficulty"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp10"
-            android:paddingStart="@dimen/dp6"
+            android:layout_marginTop="10dp"
+            android:paddingStart="5dp"
             android:text="@string/difficulty"
-            android:textColor="@color/grey"
+            android:textColor="#5C5858"
             android:textSize="@dimen/sp12"
             app:layout_constraintEnd_toEndOf="@+id/tv_number"
             app:layout_constraintStart_toStartOf="parent"
@@ -134,16 +121,16 @@
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/card_view"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dp50"
-            android:layout_marginTop="@dimen/dp10"
-            app:cardCornerRadius="@dimen/dp4"
+            android:layout_width="260dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            app:cardCornerRadius="3dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_difficulty">
 
             <Spinner
-                android:id="@+id/spinner_difficulty"
+                android:id="@+id/spinner_2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
 
@@ -154,15 +141,16 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_start"
-        android:layout_width="@dimen/dp200"
-        android:layout_height="@dimen/dp76"
-        android:backgroundTint="@color/blue"
+        android:layout_width="200dp"
+        android:layout_height="75dp"
+        android:backgroundTint="#6979F8"
         android:text="@string/start"
-        android:textSize="@dimen/sp20"
+        android:textSize="20sp"
         app:cornerRadius="@dimen/dp10"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linear_layout" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
