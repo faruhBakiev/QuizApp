@@ -34,6 +34,10 @@
             android:name="category"
             app:argType="integer"
             android:defaultValue="0" />
+        <argument
+            android:name="difficulty"
+            app:argType="string"
+            android:defaultValue="" />
     </fragment>
 
 </navigation>

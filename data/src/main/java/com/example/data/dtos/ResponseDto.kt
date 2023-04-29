@@ -6,7 +6,6 @@ data class ResponseDto<T>(
     @SerializedName("response_code")
     val responseCode: Int,
     @SerializedName("results")
-    val results: List<ResultsItemDto>?,
-    val data : List<T>
+    val results: List<T>,
 )
 

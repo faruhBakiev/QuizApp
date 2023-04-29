@@ -18,32 +18,5 @@ class HomeViewModel @Inject constructor(
     private val fetchCategoriesUseCase: FetchCategoriesUseCase
 ) : BaseViewModel() {
 
-    init {
-        fetchCategory()
-    }
 
-    private val _categoryState =
-        MutableStateFlow<UIState<List<ResultsItemUI>>>(UIState.Loading())
-    val categoryState = _categoryState.asStateFlow()
-
-    private fun fetchCategory() {
-        viewModelScope.launch {
-            fetchCategoriesUseCase( 9 ,"easy",7).collect{ either->
-                when (either) {
-                    is Either.Left -> {
-                        either.message.let {
-                            _categoryState.value = UIState.Error(either.message.toString())
-                        }
-                    }
-                    is Either.Right -> {
-                        either.data?.let { data->
-                            _categoryState.value = UIState.Success(data.map {item->
-                                item.toUI()
-                            })
-                        }
-                    }
-                }
-            }
-        }
-    }
 }
