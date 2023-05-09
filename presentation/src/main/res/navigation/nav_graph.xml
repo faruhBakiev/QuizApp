@@ -29,15 +29,19 @@
         android:id="@+id/questionFragment"
         android:name="com.example.presentation.ui.fragments.question.QuestionFragment"
         android:label="fragment_question"
-        tools:layout="@layout/fragment_question" >
+        tools:layout="@layout/fragment_question">
         <argument
             android:name="category"
-            app:argType="integer"
-            android:defaultValue="0" />
+            android:defaultValue="0"
+            app:argType="integer" />
         <argument
             android:name="difficulty"
-            app:argType="string"
-            android:defaultValue="" />
+            android:defaultValue=""
+            app:argType="string" />
+        <argument
+            android:name="amount"
+            android:defaultValue="0"
+            app:argType="integer" />
     </fragment>
 
 </navigation>

@@ -9,7 +9,7 @@ import javax.inject.Inject
 class FetchCategoriesUseCase @Inject constructor(private val repository: CategoriesRepository) {
 
     operator fun invoke(
-        category: Int, difficulty: String, amount: Int
+        category: Int, difficulty: String,amount: Int
     ): Flow<Either<String, List<ResultsItem>>> = repository.fetchCategories(category, difficulty, amount)
 
 }

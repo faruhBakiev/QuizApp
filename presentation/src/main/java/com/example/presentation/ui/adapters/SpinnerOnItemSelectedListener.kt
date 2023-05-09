@@ -3,14 +3,13 @@ package com.example.presentation.ui.adapters
 import android.view.View
 import android.widget.AdapterView
 
-
 class CategorySpinnerOnItemSelectedListener(
     private val category: Array<String>,
     private val onSpinnerItemClick: (category: Int?) -> Unit,
 ) : AdapterView.OnItemSelectedListener {
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
         when (category[position]) {
-            "Any Category" -> onSpinnerItemClick(0)
+            "All" -> onSpinnerItemClick(0)
             "General Knowledge" -> onSpinnerItemClick(9)
             "Entertainment: Books" -> onSpinnerItemClick(10)
             "Entertainment: Film" -> onSpinnerItemClick(11)
@@ -46,14 +45,13 @@ class DifficultySpinnerOnItemSelectedListener(
 ) : AdapterView.OnItemSelectedListener {
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
         when (difficulty[position]) {
-            "Any Difficulty" -> onSpinnerItemClick("")
+            "All" -> onSpinnerItemClick("")
             "Easy" -> onSpinnerItemClick("easy")
             "Medium" -> onSpinnerItemClick("medium")
             "Hard" -> onSpinnerItemClick("hard")
             else -> onSpinnerItemClick(null)
         }
     }
-
     override fun onNothingSelected(parent: AdapterView<*>?) {
         parent?.setSelection(0)
         onSpinnerItemClick(null)

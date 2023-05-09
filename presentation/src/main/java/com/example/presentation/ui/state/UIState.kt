@@ -1,4 +1,4 @@
-package com.example.presentation.state
+package com.example.presentation.ui.state
 
 sealed class UIState<T> {
     class Loading<T> : UIState<T>()

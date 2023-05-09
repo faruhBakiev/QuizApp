@@ -6,7 +6,7 @@ import com.example.domain.usecases.FetchCategoriesUseCase
 import com.example.presentation.base.BaseViewModel
 import com.example.presentation.models.ResultsItemUI
 import com.example.presentation.models.toUI
-import com.example.presentation.state.UIState
+import com.example.presentation.ui.state.UIState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -17,6 +17,4 @@ import javax.inject.Inject
 class HomeViewModel @Inject constructor(
     private val fetchCategoriesUseCase: FetchCategoriesUseCase
 ) : BaseViewModel() {
-
-
 }

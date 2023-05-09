@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:gravity="center"
     android:background="@color/white"
+    android:gravity="center"
     android:orientation="vertical">
 
     <TextView
@@ -22,7 +22,6 @@
     <com.google.android.material.progressindicator.LinearProgressIndicator
         android:id="@+id/progress_linear"
         android:layout_width="match_parent"
-        app:indicatorColor="#BE52F2"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="50dp"
         android:layout_marginTop="20dp"
@@ -50,54 +49,30 @@
 
 
     <TextView
-        android:id="@+id/tv_answer1"
+        android:id="@+id/tv_true"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginHorizontal="50dp"
-        android:textStyle="bold"
         android:background="@drawable/default_answer"
         android:gravity="center"
+        android:text="True"
+        android:textStyle="bold"
         android:textColor="#6979F8"
-        android:textSize="14sp"
-        tools:text="Colombo 1" />
+        android:textSize="14sp" />
+
 
     <TextView
-        android:id="@+id/tv_answer2"
+        android:id="@+id/tv_false"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:textStyle="bold"
         android:layout_marginHorizontal="50dp"
-        android:layout_marginVertical="12dp"
+        android:layout_marginVertical="20dp"
         android:background="@drawable/default_answer"
         android:gravity="center"
+        android:text="False"
         android:textColor="#6979F8"
-        android:textStyle="bold"
-        android:textSize="14sp"
-        tools:text="Colombo 1" />
-
-    <TextView
-        android:id="@+id/tv_answer3"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginHorizontal="50dp"
-        android:background="@drawable/default_answer"
-        android:gravity="center"
-        android:textColor="#6979F8"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        tools:text="Colombo 1" />
-
-    <TextView
-        android:id="@+id/tv_answer4"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginHorizontal="50dp"
-        android:layout_marginVertical="12dp"
-        android:background="@drawable/default_answer"
-        android:gravity="center"
-        android:textColor="#6979F8"
-        android:textStyle="bold"
-        android:textSize="14sp"
-        tools:text="Colombo 1" />
+        android:textSize="14sp" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_skip"

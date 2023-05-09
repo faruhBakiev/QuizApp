@@ -17,7 +17,7 @@ class CategoriesRepositoryImpl @Inject constructor(private val service: Categori
     CategoriesRepository {
 
     override fun fetchCategories(categories: Int, difficulty: String, amount: Int) = flow<Either<String, List<ResultsItem>>> {
-        emit(Either.Right(service.fetchCategories(10, categories,  difficulty).results.map {
+        emit(Either.Right(service.fetchCategories(amount, categories,  difficulty).results.map {
             it.toDomain()
         }))
     }.flowOn(Dispatchers.IO).catch {

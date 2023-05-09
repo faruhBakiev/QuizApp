@@ -3,6 +3,7 @@ package com.example.presentation.ui.fragments.home
 import android.widget.ArrayAdapter
 import android.widget.SeekBar
 import android.widget.SeekBar.OnSeekBarChangeListener
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -17,13 +18,14 @@ import dagger.hilt.android.AndroidEntryPoint
 class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(
     R.layout.fragment_home
 ) {
-
     override val binding by viewBinding(FragmentHomeBinding::bind)
     override val viewModel: HomeViewModel by viewModels()
     private var selectedCategory: Int = 0
     private var selectedDifficulty: String = ""
+    private var selectedAmount: Int = 0
+
     private val category = arrayOf(
-        "Any Category",
+        "All",
         "General Knowledge",
         "Entertainment: Books",
         "Entertainment: Film",
@@ -46,7 +48,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(
     )
 
     private val difficulty = arrayOf(
-        "Any Difficulty",
+        "All",
         "Easy",
         "Medium",
         "Hard"
@@ -60,13 +62,18 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(
 
     override fun setupListeners() {
         binding.btnStart.setOnClickListener {
+            val seekbar = binding.sbHome.progress
+            if (seekbar == 0){
+                Toast.makeText(requireContext(), "Выберите кол-во вопросов!", Toast.LENGTH_SHORT).show()
+            }else{
             findNavController().navigate(
                 HomeFragmentDirections.actionHomeFragmentToQuestionFragment(
                     selectedCategory,
-                    selectedDifficulty
+                    selectedDifficulty,
+                    selectedAmount
                 )
             )
-        }
+        }}
     }
 
     private fun spinnerCategory() {
@@ -86,7 +93,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(
                 }
             }
     }
-
 
     private fun spinnerDifficulty() {
         binding.spinnerDifficulty.setSelection(0)
@@ -109,6 +115,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(
         binding.sbHome.setOnSeekBarChangeListener(object : OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
                 binding.tvNumber.text = progress.toString()
+                selectedAmount = progress
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar) {
@@ -117,5 +124,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(
             override fun onStopTrackingTouch(seekBar: SeekBar) {
             }
         })
+
     }
 }
