@@ -1,5 +1,6 @@
 package com.example.presentation.ui.adapters
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
@@ -11,10 +12,10 @@ import com.example.presentation.R
 import com.example.presentation.databinding.ItemQuestionsBinding
 import com.example.presentation.models.ResultsItemUI
 
-class QuestionsAdapter() :
+class QuestionsAdapter(
+    private val onItemClick: ((position: Int, answer: Int) -> Unit)? = null
+) :
     ListAdapter<ResultsItemUI, QuestionsAdapter.QuestionsViewHolder>(diffUtil) {
-
-    val onItemClick: ((position: Int, answer: Int) -> Unit)? = null
 
     inner class QuestionsViewHolder(private val binding: ItemQuestionsBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -27,19 +28,21 @@ class QuestionsAdapter() :
             answers.add(item.correctAnswer)
             answers.shuffle()
 
-//            if (answers.size < 3) {
-//                binding.tvAnswer1.isVisible = true
-//                binding.tvAnswer4.isVisible = true
+            if (answers.size > 2) {
+                binding.tvAnswer1.isVisible = true
+                binding.tvAnswer4.isVisible = true
+
                 binding.tvAnswer1.text = answers[0]
                 binding.tvAnswer2.text = answers[1]
                 binding.tvAnswer3.text = answers[2]
                 binding.tvAnswer4.text = answers[3]
-//            } else {
-//                binding.tvAnswer1.isVisible = false
-//                binding.tvAnswer4.isVisible = false
-//                binding.tvAnswer2.text = answers[0]
-//                binding.tvAnswer3.text = answers[1]
-//            }
+
+            } else {
+                binding.tvAnswer1.isVisible = false
+                binding.tvAnswer4.isVisible = false
+                binding.tvAnswer2.text = answers[0]
+                binding.tvAnswer3.text = answers[1]
+            }
 
             val count = "${adapterPosition + 1}/${currentList.size}"
             binding.tvProgress.text = count
@@ -54,19 +57,19 @@ class QuestionsAdapter() :
 
             binding.tvAnswer1.setOnClickListener {
                 checkAnswer(binding.tvAnswer1, item)
-//                pressingBtn(false)
+                pressingBtn(false)
             }
             binding.tvAnswer2.setOnClickListener {
                 checkAnswer(binding.tvAnswer2, item)
-//                pressingBtn(false)
+                pressingBtn(false)
             }
             binding.tvAnswer3.setOnClickListener {
                 checkAnswer(binding.tvAnswer3, item)
-//                pressingBtn(false)
+                pressingBtn(false)
             }
             binding.tvAnswer4.setOnClickListener {
                 checkAnswer(binding.tvAnswer4, item)
-//                pressingBtn(false)
+                pressingBtn(false)
             }
         }
 

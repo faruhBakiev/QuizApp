@@ -15,8 +15,8 @@ import com.example.presentation.base.BaseFragment
 import com.example.presentation.databinding.FragmentQuestionBinding
 import com.example.presentation.ui.state.UIState
 import com.example.presentation.ui.adapters.QuestionsAdapter
-import com.example.presentation.ui.adapters.TrueFalseAdapter
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class QuestionFragment :
@@ -25,18 +25,18 @@ class QuestionFragment :
     override val binding by viewBinding(FragmentQuestionBinding::bind)
     override val viewModel: QuestionViewModel by viewModels()
     private val args by navArgs<QuestionFragmentArgs>()
-    private val questionsAdapter = QuestionsAdapter()
-    private val trueFalseAdapter = TrueFalseAdapter()
+    private val questionsAdapter = QuestionsAdapter(this::onItemClick)
 
     override fun initialize() {
         setupRecycler()
     }
 
     private fun setupRecycler() = with(binding.rvQuiz) {
-//        layoutManager = object : LinearLayoutManager(requireContext(), VERTICAL)
+        layoutManager = object : LinearLayoutManager(requireContext(), VERTICAL, false) {
+            override fun canScrollVertically() = false
+        }
         adapter = questionsAdapter
         setItemViewCacheSize(1)
-        scrollToPosition(1)
     }
 
     override fun setupRequests() {
@@ -64,13 +64,18 @@ class QuestionFragment :
                             Log.e("all", "success")
                             it.data.let { data ->
                                 questionsAdapter.submitList(data)
-                                trueFalseAdapter.submitList(data)
                                 binding.progressBar.isVisible = false
                             }
                         }
                     }
                 }
             }
+        }
+    }
+    private fun onItemClick(position: Int, answer: Int) {
+        viewLifecycleOwner.lifecycleScope.launch {
+            delay(900)
+            binding.rvQuiz.scrollToPosition(position + 1)
         }
     }
 }
