@@ -15,8 +15,6 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     private val binding by viewBinding(ActivityMainBinding::bind)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setTheme(R.style.Theme_QuizApp)
-        Thread.sleep(2000)
         setContentView(binding.root)
         setupNavigation()
     }

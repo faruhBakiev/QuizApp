@@ -42,6 +42,13 @@
             android:name="amount"
             android:defaultValue="0"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_questionFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/hilt_ResultFragment"
+        android:name="com.example.presentation.ui.fragments.result.Hilt_ResultFragment"
+        android:label="Hilt_ResultFragment" />
 
 </navigation>

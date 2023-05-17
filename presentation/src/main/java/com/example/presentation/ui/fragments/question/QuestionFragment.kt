@@ -7,17 +7,19 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.presentation.R
 import com.example.presentation.base.BaseFragment
 import com.example.presentation.databinding.FragmentQuestionBinding
-import com.example.presentation.ui.state.UIState
 import com.example.presentation.ui.adapters.QuestionsAdapter
+import com.example.presentation.ui.state.UIState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+
 @AndroidEntryPoint
 class QuestionFragment :
     BaseFragment<FragmentQuestionBinding, QuestionViewModel>(R.layout.fragment_question) {
@@ -31,6 +33,14 @@ class QuestionFragment :
         setupRecycler()
     }
 
+    override fun setupListeners() {
+        binding.btnBack.setOnClickListener {
+            findNavController().navigate(
+                QuestionFragmentDirections.actionQuestionFragmentToHomeFragment()
+            )
+        }
+    }
+
     private fun setupRecycler() = with(binding.rvQuiz) {
         layoutManager = object : LinearLayoutManager(requireContext(), VERTICAL, false) {
             override fun canScrollVertically() = false
@@ -40,7 +50,7 @@ class QuestionFragment :
     }
 
     override fun setupRequests() {
-        viewModel.fetchCategory(args.category, args.difficulty,args.amount)
+        viewModel.fetchCategory(args.category, args.difficulty, args.amount)
     }
 
     override fun setupSubscribes() {
@@ -72,6 +82,7 @@ class QuestionFragment :
             }
         }
     }
+
     private fun onItemClick(position: Int, answer: Int) {
         viewLifecycleOwner.lifecycleScope.launch {
             delay(900)

@@ -11,9 +11,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.presentation.R
 import com.example.presentation.databinding.ItemQuestionsBinding
 import com.example.presentation.models.ResultsItemUI
+import com.example.presentation.ui.fragments.question.QuestionFragmentDirections
 
-class QuestionsAdapter(
-    private val onItemClick: ((position: Int, answer: Int) -> Unit)? = null
+class QuestionsAdapter(private val onItemClick: ((position: Int, answer: Int) -> Unit)? = null
 ) :
     ListAdapter<ResultsItemUI, QuestionsAdapter.QuestionsViewHolder>(diffUtil) {
 
@@ -52,6 +52,7 @@ class QuestionsAdapter(
             binding.btnSkip.setOnClickListener {
                 onItemClick?.invoke(adapterPosition, 0)
             }
+
             defaultColor()
             pressingBtn(true)
 
@@ -96,7 +97,6 @@ class QuestionsAdapter(
             binding.tvAnswer3.isEnabled = boolean
             binding.tvAnswer4.isEnabled = boolean
         }
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): QuestionsViewHolder {

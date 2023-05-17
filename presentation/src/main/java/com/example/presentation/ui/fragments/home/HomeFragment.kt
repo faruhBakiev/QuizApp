@@ -63,17 +63,19 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(
     override fun setupListeners() {
         binding.btnStart.setOnClickListener {
             val seekbar = binding.sbHome.progress
-            if (seekbar == 0){
-                Toast.makeText(requireContext(), "Выберите кол-во вопросов!", Toast.LENGTH_SHORT).show()
-            }else{
-            findNavController().navigate(
-                HomeFragmentDirections.actionHomeFragmentToQuestionFragment(
-                    selectedCategory,
-                    selectedDifficulty,
-                    selectedAmount
+            if (seekbar == 0) {
+                Toast.makeText(requireContext(), "Выберите кол-во вопросов!", Toast.LENGTH_SHORT)
+                    .show()
+            } else {
+                findNavController().navigate(
+                    HomeFragmentDirections.actionHomeFragmentToQuestionFragment(
+                        selectedCategory,
+                        selectedDifficulty,
+                        selectedAmount
+                    )
                 )
-            )
-        }}
+            }
+        }
     }
 
     private fun spinnerCategory() {

@@ -38,7 +38,6 @@ class CategorySpinnerOnItemSelectedListener(
         onSpinnerItemClick(null)
     }
 }
-
 class DifficultySpinnerOnItemSelectedListener(
     private val difficulty: Array<String>,
     private val onSpinnerItemClick: (difficulty: String?) -> Unit
