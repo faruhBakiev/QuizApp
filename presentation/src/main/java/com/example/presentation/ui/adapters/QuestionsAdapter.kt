@@ -1,6 +1,5 @@
 package com.example.presentation.ui.adapters
 
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
@@ -11,9 +10,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.presentation.R
 import com.example.presentation.databinding.ItemQuestionsBinding
 import com.example.presentation.models.ResultsItemUI
-import com.example.presentation.ui.fragments.question.QuestionFragmentDirections
 
-class QuestionsAdapter(private val onItemClick: ((position: Int, answer: Int) -> Unit)? = null
+class QuestionsAdapter(
+    private val onItemClick: ((position: Int, answer: Int, correctAnswers: Boolean, category: String, difficulty: String) -> Unit)? = null
 ) :
     ListAdapter<ResultsItemUI, QuestionsAdapter.QuestionsViewHolder>(diffUtil) {
 
@@ -50,7 +49,13 @@ class QuestionsAdapter(private val onItemClick: ((position: Int, answer: Int) ->
             binding.progressLinear.progress = adapterPosition + 1
 
             binding.btnSkip.setOnClickListener {
-                onItemClick?.invoke(adapterPosition, 0)
+                onItemClick?.invoke(
+                    adapterPosition,
+                    adapterPosition,
+                    false,
+                    item.category,
+                    item.difficulty
+                )
             }
 
             defaultColor()
@@ -84,10 +89,22 @@ class QuestionsAdapter(private val onItemClick: ((position: Int, answer: Int) ->
         private fun checkAnswer(text: TextView, questions: ResultsItemUI) {
             if (text.text == questions.correctAnswer) {
                 text.setBackgroundResource(R.drawable.green)
-                onItemClick?.invoke(adapterPosition, 1)
+                onItemClick?.invoke(
+                    adapterPosition,
+                    adapterPosition,
+                    true,
+                    questions.category,
+                    questions.difficulty
+                )
             } else {
                 text.setBackgroundResource(R.drawable.red)
-                onItemClick?.invoke(adapterPosition, 0)
+                onItemClick?.invoke(
+                    adapterPosition,
+                    adapterPosition,
+                    false,
+                    questions.category,
+                    questions.difficulty
+                )
             }
         }
 
@@ -120,7 +137,8 @@ class QuestionsAdapter(private val onItemClick: ((position: Int, answer: Int) ->
             }
 
             override fun areContentsTheSame(
-                oldItem: ResultsItemUI, newItem: ResultsItemUI): Boolean {
+                oldItem: ResultsItemUI, newItem: ResultsItemUI
+            ): Boolean {
                 return oldItem == newItem
             }
         }

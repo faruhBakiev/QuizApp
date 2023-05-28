@@ -28,6 +28,7 @@ class QuestionFragment :
     override val viewModel: QuestionViewModel by viewModels()
     private val args by navArgs<QuestionFragmentArgs>()
     private val questionsAdapter = QuestionsAdapter(this::onItemClick)
+    private var correctAns: Int = 0
 
     override fun initialize() {
         setupRecycler()
@@ -83,10 +84,39 @@ class QuestionFragment :
         }
     }
 
-    private fun onItemClick(position: Int, answer: Int) {
-        viewLifecycleOwner.lifecycleScope.launch {
-            delay(900)
-            binding.rvQuiz.scrollToPosition(position + 1)
+    private fun onItemClick(
+        position: Int,
+        question: Int,
+        correctAnswers: Boolean,
+        category: String,
+        difficulty: String
+    ) {
+        if (position == questionsAdapter.currentList.lastIndex) {
+            viewLifecycleOwner.lifecycleScope.launch {
+                if (correctAnswers) {
+                    correctAns++
+                }
+                val resultPercent = (correctAns.toDouble() / args.amount.toDouble()) * 100
+                val result = "${resultPercent.toInt()}%"
+                delay(900)
+                findNavController().navigate(
+                    QuestionFragmentDirections.actionQuestionFragmentToResultFragment(
+                        question + 1,
+                        correctAns,
+                        result,
+                        category,
+                        difficulty
+                    )
+                )
+            }
+        } else {
+            viewLifecycleOwner.lifecycleScope.launch {
+                if (correctAnswers) {
+                    correctAns++
+                }
+                delay(900)
+                binding.rvQuiz.scrollToPosition(position + 1)
+            }
         }
     }
 }

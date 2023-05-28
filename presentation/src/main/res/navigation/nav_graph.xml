@@ -45,10 +45,33 @@
         <action
             android:id="@+id/action_questionFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_questionFragment_to_resultFragment"
+            app:destination="@id/resultFragment" />
     </fragment>
     <fragment
-        android:id="@+id/hilt_ResultFragment"
-        android:name="com.example.presentation.ui.fragments.result.Hilt_ResultFragment"
-        android:label="Hilt_ResultFragment" />
+        android:id="@+id/resultFragment"
+        android:name="com.example.presentation.ui.fragments.result.ResultFragment"
+        android:label="fragment_result"
+        tools:layout="@layout/fragment_result" >
+
+        <argument
+            android:name="category"
+            app:argType="string"
+            android:defaultValue=""/>
+        <argument
+            android:name="answers"
+            app:argType="integer" />
+        <argument
+            android:name="difficulty"
+            app:argType="string"
+            android:defaultValue=""/>
+        <argument
+            android:name="correctAnswers"
+            app:argType="integer" />
+        <argument
+            android:name="result"
+            app:argType="string" />
+    </fragment>
 
 </navigation>

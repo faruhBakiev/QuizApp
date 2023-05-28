@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white">
+    android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/tv_quiz"
@@ -21,8 +20,8 @@
 
     <ImageView
         android:id="@+id/im_quiz"
-        android:layout_width="wrap_content"
-        android:layout_height="100dp"
+        android:layout_width="@dimen/dp76"
+        android:layout_height="@dimen/dp126"
         android:layout_marginTop="@dimen/dp30"
         android:src="@drawable/img1"
         app:layout_constraintEnd_toEndOf="parent"
@@ -45,7 +44,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/questions_amount"
-            android:textColor="#A9A9A9"
+            android:textColor="@color/grey"
             android:textSize="@dimen/sp12"
             app:layout_constraintBottom_toTopOf="@+id/linear_layout"
             app:layout_constraintEnd_toEndOf="parent"
@@ -57,9 +56,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/dp6"
-            android:text="@string/_0"
-            android:textColor="#3F3356"
-            android:textSize="18dp"
+            android:text="@string/_10"
+            android:textColor="@color/darkpurple"
+            android:textSize="@dimen/sp20"
             app:layout_constraintBottom_toBottomOf="@+id/sb_home"
             app:layout_constraintStart_toEndOf="@+id/tv_questions"
             app:layout_constraintTop_toBottomOf="@+id/im_quiz" />
@@ -97,7 +96,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dp16"
             android:text="@string/category"
-            android:textColor="#A9A9A9"
+            android:textColor="@color/grey"
             android:textSize="@dimen/sp12"
             app:layout_constraintEnd_toEndOf="@+id/tv_number"
             app:layout_constraintStart_toStartOf="parent"
@@ -127,7 +126,7 @@
             android:layout_marginTop="@dimen/dp10"
             android:paddingStart="@dimen/dp6"
             android:text="@string/difficulty"
-            android:textColor="#A9A9A9"
+            android:textColor="@color/grey"
             android:textSize="@dimen/sp12"
             app:layout_constraintEnd_toEndOf="@+id/tv_number"
             app:layout_constraintStart_toStartOf="parent"

@@ -100,7 +100,6 @@
         android:layout_height="@dimen/dp90"
         android:layout_marginTop="@dimen/dp1">
 
-
         <TextView
             android:id="@+id/tv_clean_history"
             android:layout_width="match_parent"

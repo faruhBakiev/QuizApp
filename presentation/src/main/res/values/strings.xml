@@ -13,7 +13,6 @@
     <string name="rate_us">Rate us</string>
     <string name="leave_feedback">Leave feedback</string>
     <string name="clear_history">Clear history</string>
-    <string name="_0">0</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="skip">Skip</string>
+    <string name="hello_blank_fragment">hello_blank_fragment</string>
 </resources>

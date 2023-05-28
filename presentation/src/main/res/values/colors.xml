@@ -6,8 +6,14 @@
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
+    <color name="textquestion">#1A051D</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="pink">#FF6581</color>
     <color name="violet">#BE52F2</color>
-    <color name="grey">#5C5858</color>
+    <color name="grey">#A9A9A9</color>
     <color name="blue">#6979F8</color>
+    <color name="darkpurple">#3F3356</color>
+    <color name="birch">#4CE2A7</color>
+    <color name="black_blue">#1F2041</color>
+    <color name="bluetv">#6979F8</color>
 </resources>
